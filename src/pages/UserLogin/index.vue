@@ -2,7 +2,7 @@
   <div class="login">
     <img
       class="logo-image"
-      src="../assets/img/LenovoLogo-Chinese_POS-Cyan-H.png"
+      src="../../assets/img/LenovoLogo-Chinese_POS-Cyan-H.png"
     />
     <div>
       <div class="login-right">
@@ -40,8 +40,8 @@
 import { reactive } from "vue";
 import { useRouter } from "vue-router";
 import { UserOutlined } from "@ant-design/icons-vue";
-import { useRequest } from "../utils/request";
-import { userLogin } from "../config/dataSource";
+import { useRequest } from "@/utils/request";
+import { userLogin } from "@/config/dataSource";
 export default {
   setup() {
     const router = useRouter();
@@ -54,7 +54,7 @@ export default {
       try {
         await request({ data: form });
         router.push({
-          name: "home",
+          path: "/app",
         });
       } catch (error) {
         console.error(error);
@@ -76,7 +76,7 @@ export default {
 .login {
   width: 100%;
   height: 100%;
-  background: url(../assets/img/bigbg.jpg) no-repeat;
+  background: url(../../assets/img/bigbg.jpg) no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;

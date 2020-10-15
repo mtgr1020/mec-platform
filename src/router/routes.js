@@ -2,11 +2,13 @@
  * 所有路由集合
  * @author zhangzy44
  */
-const Login = () => import("@/pages/login.vue");
+const Login = () => import("@/pages/UserLogin");
+const BasicLayout = () => import("@/layouts/BasicLayout/index.jsx");
+const WorkSpace = () => import("@/pages/WorkSpace");
 
 const routes = [
   {
-    path: "",
+    path: "/",
     redirect: {
       name: "login",
     },
@@ -17,9 +19,19 @@ const routes = [
     component: Login,
   },
   {
-    path: "/home",
-    name: "home",
-    component: Login,
+    path: "/app",
+    name: "app",
+    component: BasicLayout,
+    children: [
+      {
+        path: "workspace",
+        component: WorkSpace,
+      },
+      {
+        path: "",
+        redirect: "/app/workspace",
+      },
+    ],
   },
 ];
 
