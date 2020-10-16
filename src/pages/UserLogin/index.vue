@@ -8,14 +8,14 @@
       <div class="login-right">
         <a-form name="custom-validation" ref="ruleForm">
           <a-form-item>
-            <a-input placeholder="用户名" v-model:value="form.userName">
+            <a-input placeholder="用户名" v-model:value="userInfo.userName">
               <template v-slot:suffix><UserOutlined /></template>
             </a-input>
           </a-form-item>
           <a-form-item required has-feedback>
             <a-input-password
               placeholder="密码"
-              v-model:value="form.pass"
+              v-model:value="userInfo.pass"
               type="password"
             />
           </a-form-item>
@@ -45,14 +45,14 @@ import { userLogin } from "@/config/dataSource";
 export default {
   setup() {
     const router = useRouter();
-    const form = reactive({
+    const userInfo = reactive({
       userName: "zhang",
-      pass: "111",
+      pass: "111111",
     });
     const { loading, request } = useRequest(userLogin);
     const onLogin = async () => {
       try {
-        await request({ data: form });
+        await request({ data: userInfo });
         router.push({
           path: "/app",
         });
@@ -61,7 +61,7 @@ export default {
       }
     };
     return {
-      form,
+      userInfo,
       loading,
       onLogin,
     };
