@@ -13,7 +13,7 @@ axios.defaults.withCredentials = true;
  * @param {object} options - axios config (https://github.com/axios/axios#request-config)
  * @return {object} response data
  */
-export const request = async function(option) {
+export const request = async function (option) {
   try {
     const response = await axios(option);
     const { data, error } = handleResponse(response);
@@ -29,7 +29,7 @@ export const request = async function(option) {
   }
 };
 
-export const useRequest = function(options) {
+export const useRequest = function (options) {
   let loading = ref(false);
   async function request(config) {
     try {
@@ -42,11 +42,10 @@ export const useRequest = function(options) {
       if (error) {
         throw error;
       } else {
-        return { response, data };
+        return { data };
       }
     } catch (error) {
-      showError(error.message);
-      console.error(error);
+      showError(`${options.method} ${options.url} ${error.message}`);
     } finally {
       loading.value = false;
     }

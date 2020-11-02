@@ -1,9 +1,6 @@
 <template>
   <div class="login">
-    <img
-      class="logo-image"
-      src="../../assets/img/LenovoLogo-Chinese_POS-Cyan-H.png"
-    />
+    <img class="logo-image" src="../../assets/img/Logo.png" />
     <div>
       <div class="login-right">
         <a-form name="custom-validation" ref="ruleForm">
@@ -47,15 +44,17 @@ export default {
     const router = useRouter();
     const userInfo = reactive({
       userName: "zhang",
-      pass: "111111",
+      pass: "zhang",
     });
     const { loading, request } = useRequest(userLogin);
     const onLogin = async () => {
       try {
-        await request({ data: userInfo });
-        router.push({
-          path: "/app",
-        });
+        const res = await request({ data: userInfo });
+        if (res) {
+          router.push({
+            path: "/app",
+          });
+        }
       } catch (error) {
         console.error(error);
       }
@@ -76,7 +75,7 @@ export default {
 .login {
   width: 100%;
   height: 100%;
-  background: url(../../assets/img/bigbg.jpg) no-repeat;
+  background: url(../../assets/img/bigbg.png) no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -84,8 +83,7 @@ export default {
 }
 .logo-image {
   position: relative;
-  top: -5%;
-  left: 10%;
+  left: 8%;
   width: 5rem;
 }
 .login-right {
