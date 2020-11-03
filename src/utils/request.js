@@ -42,7 +42,7 @@ export const useRequest = function (options) {
       if (error) {
         throw error;
       } else {
-        return { data };
+        return data;
       }
     } catch (error) {
       showError(`${options.method} ${options.url} ${error.message}`);

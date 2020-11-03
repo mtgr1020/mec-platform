@@ -1,18 +1,21 @@
-import { defineComponent } from "@vue/runtime-core";
+import { defineComponent, ref } from "@vue/runtime-core";
 import { useRequest } from "@/utils/request";
-import { getAsideMenus } from "@/config/dataSource"
+import { getAsideMenus } from "@/config/dataSource";
 
 export default defineComponent({
-  async setup() {
+  setup() {
+    const asideMenuList = ref([]);
     const { request } = useRequest(getAsideMenus);
-    const memus = await request()
-    console.log(memus)
-  },
-  render() {
-    return (
-      <div>
-        <p>Aside</p>
-      </div>
-    );
+    request().then((res) => {
+      asideMenuList.value = res.asideMenuList;
+    });
+    const listMenus = asideMenuList.value.map((menu) => {
+      return <div keys="menu.name">{menu.name}</div>;
+    });
+    return () => {
+      <>
+        <listMenus />
+      </>;
+    };
   },
 });
