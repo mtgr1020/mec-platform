@@ -4,7 +4,7 @@ import { ref } from "vue";
 
 // Set baseURL when debugging production url in dev mode
 axios.defaults.baseURL =
-  process.env.NODE_ENV === "development" ? "http://localhost:5000" : "";
+  process.env.NODE_ENV === "development" ? "http://localhost:9000" : "";
 axios.defaults.withCredentials = true;
 
 /**

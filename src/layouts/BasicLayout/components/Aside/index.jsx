@@ -1,6 +1,9 @@
 import { defineComponent, ref } from "@vue/runtime-core";
 import { useRequest } from "@/utils/request";
 import { getAsideMenus } from "@/config/dataSource";
+import styleModule from "./index.module.less";
+
+console.log(styleModule);
 
 export default defineComponent({
   setup() {
@@ -9,13 +12,15 @@ export default defineComponent({
     request().then((res) => {
       asideMenuList.value = res.asideMenuList;
     });
-    const listMenus = asideMenuList.value.map((menu) => {
-      return <div keys="menu.name">{menu.name}</div>;
-    });
-    return () => {
-      <>
-        <listMenus />
-      </>;
-    };
+
+    return () => (
+      <div className={styleModule["g-aside"]}>
+        <ul>
+          {asideMenuList.value.map((item) => {
+            return <li>{item.name}</li>;
+          })}
+        </ul>
+      </div>
+    );
   },
 });
