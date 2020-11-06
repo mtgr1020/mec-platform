@@ -3,8 +3,6 @@ import { useRequest } from "@/utils/request";
 import { getAsideMenus } from "@/config/dataSource";
 import styleModule from "./index.module.less";
 
-console.log(styleModule);
-
 export default defineComponent({
   setup() {
     const asideMenuList = ref([]);

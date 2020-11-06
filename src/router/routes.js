@@ -5,6 +5,7 @@
 const Login = () => import("@/pages/UserLogin");
 const BasicLayout = () => import("@/layouts/BasicLayout/index.jsx");
 const WorkSpace = () => import("@/pages/WorkSpace");
+const DragDemo = () => import("@/pages/DragDemo")
 
 const routes = [
   {
@@ -26,6 +27,10 @@ const routes = [
       {
         path: "workspace",
         component: WorkSpace,
+      },
+      {
+        path: "dragdemo",
+        component: DragDemo,
       },
       {
         path: "",
