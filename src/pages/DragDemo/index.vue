@@ -17,7 +17,14 @@
       <EasyDrag class="drag-list-item">
         <div
           style="width: 300px; height: 300px"
-          ref="chart"
+          ref="chart1"
+          :renderRely="initMockCharts"
+        ></div>
+      </EasyDrag>
+      <EasyDrag class="drag-list-item">
+        <div
+          style="width: 300px; height: 300px"
+          ref="chart2"
           :renderRely="initMockCharts"
         ></div>
       </EasyDrag>
@@ -50,7 +57,8 @@ export default {
   },
 
   mounted() {
-    this.initMockCharts("chart");
+    this.initMockCharts("chart1");
+    this.initMockCharts("chart2");
   },
 
   provide() {
@@ -64,7 +72,8 @@ export default {
       this.dargElement.splice(0, 1, slot);
     },
     initMockCharts(key) {
-      echarts.init(this.$refs[key]).setOption(mockBarData);
+      echarts.init(this.$refs[key]).setOption(mockBarData());
+      setTimeout(this.initMockCharts.bind(this, key), 1000);
     },
   },
   components: {
@@ -86,14 +95,14 @@ export default {
     flex-wrap: wrap;
     padding: @space;
     .drop-sub {
-      flex-basis: 33.33%;
+      flex-basis: 30%;
       background-color: @drag-bg-color;
-      max-height: 300px;
-      margin: 0 5px;
+      height: 300px;
+      margin: @space;
     }
   }
 
-  @basis-width: 200px;
+  @basis-width: 300px;
   .drag-list-wrap {
     @backcolor: rgb(95, 204, 153);
     @min-height: 100px;
