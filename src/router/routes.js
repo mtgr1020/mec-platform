@@ -8,20 +8,14 @@ const WorkSpace = () => import("@/pages/WorkSpace");
 const DragDemo = () => import("@/pages/DragDemo")
 
 const routes = [
-  {
-    path: "/",
-    redirect: {
-      name: "login",
-    },
-  },
+
   {
     path: "/login",
     name: "login",
     component: Login,
   },
   {
-    path: "/app",
-    name: "app",
+    path: "/",
     component: BasicLayout,
     children: [
       {
@@ -34,7 +28,7 @@ const routes = [
       },
       {
         path: "",
-        redirect: "/app/workspace",
+        redirect: "/workspace",
       },
     ],
   },

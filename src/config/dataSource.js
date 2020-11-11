@@ -1,3 +1,4 @@
+
 export const userLogin = {
   url: "/api/v1/userLogin",
   method: "POST",
@@ -5,5 +6,8 @@ export const userLogin = {
 
 export const getAsideMenus = {
   url: "/api/v1/getAsideMenus",
-  method: "GET"
+}
+
+export const checkAuthentication = {
+  url: "/api/v1/checkAuthentication"
 }

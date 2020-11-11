@@ -52,7 +52,7 @@ export default {
         const res = await request({ data: userInfo });
         if (res) {
           router.push({
-            path: "/app",
+            path: "/",
           });
         }
       } catch (error) {

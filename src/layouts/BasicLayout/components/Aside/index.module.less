@@ -1,3 +1,20 @@
-.g-aside {
-  color: #fff;
+.m-list-wrap {
+  @item-padding: 0.1rem;
+  @default-color: rgb(240, 242, 245);
+
+  list-style: none;
+  padding-left: 0;
+  color: @default-color;
+  li {
+    padding: @item-padding @item-padding*2;
+    font-size: 0.16rem;
+    &:hover {
+      background-color: @default-color;
+      color: rgb(0, 21, 40);
+    }
+  }
+}
+
+.m-list-font {
+  padding-left: 0.05rem;
 }
