@@ -6,10 +6,13 @@ import { checkAuthentication } from "@/config/dataSource";
  * 用户是否登录
  */
 const canUserAccess = async (to, next) => {
-    let isAuthenticated = false
+    // TODO如何能解决白屏问题呢 ssr? 缓存到client?
+    if (to.name === 'login' || sessionStorage.getItem('isLogin')) {
+        return next()
+    }
     const { request } = useRequest(checkAuthentication)
-    await request()
-    if (to.name !== 'login' && !isAuthenticated) {
+    let { isAuthenticated } = await request()
+    if (!isAuthenticated) {
         next({
             name: 'login'
         })

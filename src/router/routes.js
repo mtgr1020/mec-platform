@@ -5,13 +5,12 @@
 const Login = () => import("@/pages/UserLogin");
 const BasicLayout = () => import("@/layouts/BasicLayout/index.jsx");
 const WorkSpace = () => import("@/pages/WorkSpace");
-const DragDemo = () => import("@/pages/DragDemo")
 
 const routes = [
 
   {
     path: "/login",
-    name: "login",
+    name: "Login",
     component: Login,
   },
   {
@@ -23,8 +22,28 @@ const routes = [
         component: WorkSpace,
       },
       {
-        path: "dragdemo",
-        component: DragDemo,
+        path: "menu",
+        component: WorkSpace,
+      },
+      {
+        path: "chart",
+        component: WorkSpace,
+      },
+      {
+        path: "table",
+        component: WorkSpace,
+      },
+      {
+        path: "list",
+        component: WorkSpace,
+      },
+      {
+        path: "profile",
+        component: WorkSpace,
+      },
+      {
+        path: "exception",
+        component: WorkSpace,
       },
       {
         path: "",

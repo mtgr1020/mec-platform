@@ -5,12 +5,15 @@
   list-style: none;
   padding-left: 0;
   color: @default-color;
+  .m-list-active {
+    background-color: @default-color;
+    color: rgb(0, 21, 40);
+  }
   li {
     padding: @item-padding @item-padding*2;
     font-size: 0.16rem;
     &:hover {
-      background-color: @default-color;
-      color: rgb(0, 21, 40);
+      .m-list-active();
     }
   }
 }

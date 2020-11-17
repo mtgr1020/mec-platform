@@ -51,6 +51,7 @@ export default {
       try {
         const res = await request({ data: userInfo });
         if (res) {
+          sessionStorage.setItem("isLogin", true);
           router.push({
             path: "/",
           });

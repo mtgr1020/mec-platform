@@ -1,6 +1,7 @@
 import axios from "axios";
 import { message } from "ant-design-vue";
 import { ref } from "vue";
+import { router } from "../router"
 
 // Set baseURL when debugging production url in dev mode
 axios.defaults.baseURL =
@@ -25,7 +26,6 @@ export const request = async function (option) {
   } catch (error) {
     showError(error.message);
     console.error(error);
-    // throw error
   }
 };
 
@@ -45,7 +45,7 @@ export const useRequest = function (options) {
         return data;
       }
     } catch (error) {
-      showError(`${options.method} ${options.url} ${error.message}`);
+      showError(`${options.method || 'GET'} ${options.url} ${error.message}`);
     } finally {
       loading.value = false;
     }
@@ -69,8 +69,10 @@ function handleResponse(response) {
   if (data.status === "SUCCESS") {
     return { data };
   } else if (data.status === "NOT_LOGIN") {
-    location.href = "/#/user";
-    const error = new Error(data.message || "用户认证失败,请重新登录");
+    router.push({
+      name: 'Login'
+    })
+    const error = new Error("用户认证失败,请重新登录");
     return { error };
   } else {
     const error = new Error(data.message || "后端接口异常");

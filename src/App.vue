@@ -11,6 +11,9 @@ export default {
 <style>
 #app {
   height: 100%;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 </style>
 
